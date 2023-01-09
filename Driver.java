@@ -10,12 +10,12 @@ public class Driver {
         //getting players arraylist
         List<Hand> players = Hand.getPlayers();
 
-        //getting main deck and discard
+        //getting main deck, base, and discard
         Deck main = Deck.getMainDeck();
         DiscardPile discard = DiscardPile.getDiscard();
         Hand base = Hand.getBase();
 
-        //adding cards to deck
+        //adding cards to deck and shuffling
         main.deckCreation(52);
         main.shuffle();     
 
@@ -37,6 +37,8 @@ public class Driver {
         main.printDeckCardsNum();
         discard.printDiscardPileCardsNum();
 
+        //looping play function until game is over or max # of rounds has been reached
+        // whichever comes first
         do {
             base.play();
         } while (base.gameOver == 0 && base.round < base.maxRounds);
@@ -48,6 +50,7 @@ public class Driver {
         discard.printDiscardPileCardsNum();
 
         //printing total # cards players have
+        
         int total = 0;
         //looping through players
         for (int i = 0; i < players.size(); i++) {

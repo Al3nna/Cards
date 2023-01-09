@@ -32,11 +32,13 @@ public class Card {
         if (sequenceNumber != 1 && sequenceNumber != 11 && sequenceNumber != 12 && sequenceNumber != 13) {
             //setting name
             name = (sequenceNumber+" of "+suit);
+            //setting Id
             fullId = (name+", "+cardIdNumber);
             return (name);
         } else {
             //setting name
             name = (court+" of "+suit);
+            //setting Id
             fullId = (name+", "+cardIdNumber);
             return (name);
         }

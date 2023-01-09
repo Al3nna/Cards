@@ -176,7 +176,6 @@ public class Hand extends Card {
                 if (hand.get(i).sequenceNumber < hand.get(min).sequenceNumber) {
                     //setting min to the lesser value
                     min = i;
-                    
                 }
 
                 //if loop has gone through the hand
@@ -230,9 +229,9 @@ public class Hand extends Card {
     public void winCheck(int index) {
         //checking if their hand is full
         if (players.get(index).hand.size() == handSize) {
-            //looping through hand
             card = 0;
             sum = 0;
+            //looping through hhand
             for (int j = 0; j < players.get(index).hand.size(); j++) {
                 card = players.get(index).hand.get(j).sequenceNumber;
                 //adding card sequence numbers together
@@ -269,20 +268,24 @@ public class Hand extends Card {
                 }
             }
             System.out.println();
-            //base.rankPlayers();
         }
     }
     
     public void first() {
         int top = 0;
 
+        //looping through players
         for (int i = 0; i < players.size(); i++) {
             if (i >= 1) {
+                //comparing current player sum to previous player sum
                 if (players.get(i).sum > players.get(top).sum) {
+                    //setting top to greater value
                     top = i;
                 }
 
+                //if loop has gone through all players
                 if (i == players.size() - 1) {
+                    //running win function for top player
                     win(top, players.get(top).sum);
                 }
             }
@@ -295,6 +298,7 @@ public class Hand extends Card {
             //dealing cards
             //looping through players
             for (int i = 0; i < players.size(); i++) {
+                //making sure game is not over
                 if (gameOver == 0) {
                     //checking if there are 0 cards in hand
                     if (players.get(i).hand.size() == 0 ) {
@@ -309,7 +313,9 @@ public class Hand extends Card {
                         //checking if current player won
                         players.get(i).winCheck(i);
                         
+                        //if winIndex changed
                         if (winIndex != 99) {
+                            //game is over
                             gameOver = 1;
                             //doesn't loop again because "i" is no longer inside the qualifications to loop
                             i = players.size();
@@ -319,8 +325,9 @@ public class Hand extends Card {
             }
             //making sure game is not over
             if (base.gameOver == 0) {
-                //main.printDeckCardsNum();
+                //looping through players
                 for (int i = 0; i < players.size(); i++) {
+                    //if game is not over
                     if (base.gameOver == 0) {
                         //running turn for current player
                         players.get(i).turn();
@@ -329,10 +336,12 @@ public class Hand extends Card {
                         
                         //exiting loop if current player won
                         if (winIndex != 99) {
+                            //game is over
                             base.gameOver = 1;
                             //doesn't loop again because "i" is no longer inside the qualifications to loop
                             i = players.size();
                         }
+                        //if loop has gone through all players and nobody won
                         if (i == players.size() - 1 && base.gameOver == 0) {
                             round++;
                             System.out.println("--------------------------");
@@ -348,6 +357,7 @@ public class Hand extends Card {
             System.out.println("------------------------------------------------------------------------");
             System.out.println("This game has reached the set maximum rounds");
             System.out.println("No player reached the point goal so the player with the most points wins");
+            //running first function
             first();       
             System.out.println("------------------------------------------------------------------------");
         }

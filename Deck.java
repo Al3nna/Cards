@@ -11,6 +11,7 @@ public class Deck {
 
     //constructor if value is empty
     public Deck() {
+        //setting deck size
         deckSize = 52;
     }
     
@@ -33,10 +34,11 @@ public class Deck {
 
     //creating new deck
     void deckCreation(int deckSize) {
+        //if decksize is invalid
         if (deckSize != 52) {
             System.out.println("invalid deck size, please do not include jokers");
         } else {
-            //int d counts each new card in the deck starting from 0
+            //int id counts each new card in the deck starting from 0
             int id = 0;
             //creates sequence of 13 cards
             for (int sequenceNum = 0; sequenceNum < 13; sequenceNum++) {
@@ -59,7 +61,7 @@ public class Deck {
 
                     //checking if sequence number = 1
                     if (deck.get(id).sequenceNumber == 1) {
-                    //setting court to ace
+                    //setting court
                         deck.get(id).court = "Ace";
                     } else if (deck.get(id).sequenceNumber == 11) { //setting jack court
                         deck.get(id).court = "Jack";
